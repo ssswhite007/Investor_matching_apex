@@ -1,0 +1,241 @@
+# Apex Investment Matching Platform - .gitignore
+
+# =============================================================================
+# SENSITIVE FILES - NEVER COMMIT THESE
+# =============================================================================
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+
+# API Keys and credentials
+config/secrets.json
+config/credentials.json
+*.key
+*.pem
+*.p12
+*.pfx
+
+# =============================================================================
+# PYTHON BACKEND
+# =============================================================================
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+backend/venv/
+backend/env/
+backend/.venv/
+venv/
+env/
+.venv/
+
+# Python distribution / packaging
+backend/dist/
+backend/build/
+backend/*.egg-info/
+backend/.eggs/
+
+# PyInstaller
+backend/*.manifest
+backend/*.spec
+
+# Unit test / coverage reports
+backend/htmlcov/
+backend/.tox/
+backend/.coverage
+backend/.coverage.*
+backend/.cache
+backend/nosetests.xml
+backend/coverage.xml
+backend/*.cover
+backend/.hypothesis/
+backend/.pytest_cache/
+
+# Jupyter Notebook
+backend/.ipynb_checkpoints
+
+# IPython
+backend/profile_default/
+backend/ipython_config.py
+
+# =============================================================================
+# FRONTEND (NEXT.JS / REACT)
+# =============================================================================
+
+# Dependencies
+frontend/node_modules/
+frontend/.pnp
+frontend/.pnp.js
+
+# Production builds
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+
+# Runtime data
+frontend/pids
+frontend/*.pid
+frontend/*.seed
+frontend/*.pid.lock
+
+# Coverage directory used by tools like istanbul
+frontend/coverage/
+frontend/.nyc_output
+
+# ESLint cache
+frontend/.eslintcache
+
+# Optional npm cache directory
+frontend/.npm
+
+# Optional REPL history
+frontend/.node_repl_history
+
+# Output of 'npm pack'
+frontend/*.tgz
+
+# Yarn Integrity file
+frontend/.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+frontend/.cache
+frontend/.parcel-cache
+
+# Next.js build output
+frontend/.next
+
+# Nuxt.js build / generate output
+frontend/.nuxt
+frontend/dist
+
+# Storybook build outputs
+frontend/.out
+frontend/.storybook-out
+
+# Temporary folders
+frontend/tmp/
+frontend/temp/
+
+# =============================================================================
+# UPLOADS & USER DATA
+# =============================================================================
+
+# PDF uploads (contains sensitive business information)
+backend/uploads/
+uploads/
+*.pdf
+
+# CSV data files (may contain sensitive investor information)
+investor.csv
+investors.csv
+fund_data.csv
+*.csv
+
+# Log files
+*.log
+logs/
+backend/logs/
+frontend/logs/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# =============================================================================
+# DEVELOPMENT TOOLS
+# =============================================================================
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =============================================================================
+# MISC
+# =============================================================================
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Compressed files
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Documentation builds (if using Sphinx or similar)
+docs/_build/
+
+# =============================================================================
+# PROJECT SPECIFIC
+# =============================================================================
+
+# OpenAI API responses cache
+backend/api_cache/
+api_responses/
+
+# Fund matching results cache
+backend/matching_cache/
+matching_results/
+
+# Processed documents
+backend/processed/
+processed_pdfs/
+
+# Test data
+test_data/
+sample_data/
+mock_data/
+
+# Performance profiling
+*.prof
+
+# =============================================================================
+# DEPLOYMENT
+# =============================================================================
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Deployment scripts with sensitive info
+deploy.sh
+deployment/
+
+# SSL certificates
+*.crt
+*.cert
+
+# =============================================================================
+# EXAMPLES TO KEEP (COMMENTED OUT)
+# =============================================================================
+
+# Uncomment these if you want to keep example files in version control:
+# !example.env
+# !sample_investor_data.csv
+# !demo_pitch_deck.pdf
