@@ -67,15 +67,29 @@ class PitchDeckParser:
           * "Both (Lead & Co-Investor)" - if they can do both roles
           * Specific firm name if mentioned (e.g., "Acme Ventures")
           * "Unknown" if not specified
-        - investment_theme: Primary investment theme or focus area. Choose the MOST RELEVANT single theme or maximum 2 themes. Examples:
-          * Healthcare: "Digital Health", "MedTech", "Biotech & Pharma", "Healthcare Services & Delivery", "Healthcare IT & Infrastructure"
-          * Technology: "FinTech", "EdTech", "B2B SaaS", "AI/ML", "Cybersecurity", "E-commerce", "Mobile Apps"
-          * Industry: "CleanTech", "AgTech", "FoodTech", "Supply Chain", "Manufacturing", "Energy"
-          * Emerging: "Web3", "Blockchain", "AR/VR", "Robotics", "Climate Tech"
+        - investment_theme: Primary investment theme or focus area. Choose the MOST RELEVANT single theme or maximum 2 themes.
+        
+          **STANDARDIZED HEALTHCARE THEMES (use these exact terms):**
+          * Digital Health: AI in Healthcare, Remote Patient Monitoring, Digital Therapeutics, Telemedicine & Virtual Care, Health & Wellness Apps
+          * MedTech: Medical Devices, Imaging & Diagnostics, Surgical Robotics, Wearable Health Devices
+          * Biotech & Pharma: Precision Medicine, Gene Therapy, Drug Discovery & Development, Biomanufacturing
+          * Healthcare Services & Delivery: Value-Based Care, Mental & Behavioral Health, Elder Care & Aging Tech, Women's Health & FemTech
+          * Healthcare IT & Infrastructure: Interoperability & EHR, Data Analytics & AI, Cybersecurity for Healthcare, Clinical Workflow Automation
+          * Insurance & Fintech in Healthcare: Value-Based Payment Models, AI in Underwriting, Healthcare Revenue Cycle Management
+          * Longevity & Emerging Trends: Longevity & Anti-Aging, Psychedelic Medicine, Regenerative Medicine
           
-          IMPORTANT: Use only 1-2 most specific and relevant themes. Avoid redundant or overlapping themes.
-          Good: "Digital Health" or "FinTech, B2B SaaS"
-          Bad: "Digital Health, AI, Healthcare Services, Proprietary Analytics" (too many overlapping themes)
+          **OTHER TECHNOLOGY THEMES:**
+          * FinTech, EdTech, B2B SaaS, AI/ML, Cybersecurity, E-commerce, Mobile Apps
+          
+          **INDUSTRY THEMES:**
+          * CleanTech, AgTech, FoodTech, Supply Chain, Manufacturing, Energy
+          
+          **EMERGING THEMES:**
+          * Web3, Blockchain, AR/VR, Robotics, Climate Tech
+          
+          IMPORTANT: Use only 1-2 most specific and relevant themes. For healthcare companies, use the standardized healthcare themes above.
+          Good: "Digital Health" or "MedTech" or "FinTech, B2B SaaS"
+          Bad: "Digital Health, AI, Healthcare Services, Analytics" (too many overlapping themes)
         
         Return ONLY a valid JSON object with the extracted information. If information is not found, use null for that field.
         Do not include any explanatory text, only the JSON response.
@@ -103,6 +117,18 @@ class PitchDeckParser:
             "check_size": "$2M",
             "lead": "Co-Investor",
             "investment_theme": "Biotech & Pharma"
+        }
+        
+        {
+            "company_name": "MedDevice Corp",
+            "company_website": "www.meddevicecorp.com",
+            "company_email": "info@meddevicecorp.com",
+            "sector": "Medical Technology",
+            "location": "Minneapolis, MN",
+            "stage": "Series B",
+            "check_size": "$15M",
+            "lead": "Both (Lead & Co-Investor)",
+            "investment_theme": "MedTech"
         }"""
         
         user_prompt = f"""Analyze this pitch deck page content and extract investment information:
@@ -111,13 +137,13 @@ class PitchDeckParser:
         {page_content}
         
         IMPORTANT: For investment_theme, identify the PRIMARY theme only (maximum 2 themes). Focus on:
-        - The main industry vertical (FinTech, HealthTech, EdTech, etc.)
-        - The core technology or approach (Digital Health, B2B SaaS, AI/ML, etc.)
+        - Use the STANDARDIZED HEALTHCARE THEMES for healthcare companies (Digital Health, MedTech, Biotech & Pharma, Healthcare Services & Delivery, Healthcare IT & Infrastructure, Insurance & Fintech in Healthcare, Longevity & Emerging Trends)
+        - For non-healthcare: use Technology, Industry, or Emerging themes
         - Avoid redundant or overlapping themes
         - Be concise and specific
         
-        Examples of GOOD themes: "Digital Health", "FinTech", "B2B SaaS", "MedTech"
-        Examples of BAD themes: "Digital Health, AI, Healthcare Services, Analytics" (too verbose)
+        Examples of GOOD themes: "Digital Health", "MedTech", "FinTech", "B2B SaaS"
+        Examples of BAD themes: "Digital Health, AI, Healthcare Services, Analytics" (too verbose and overlapping)
         
         Extract the investment information as JSON:"""
         

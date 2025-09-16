@@ -165,4 +165,4 @@ if __name__ == '__main__':
         print("Fund matching will not work without Airtable API key.")
         print("Get your API key from: https://airtable.com/account")
     
-    app.run(debug=True, host='127.0.0.1', port=5000, use_reloader=False)
+    app.run(debug=True, host='0.0.0.0', port=5000, use_reloader=False)

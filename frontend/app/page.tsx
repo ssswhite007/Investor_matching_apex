@@ -39,7 +39,7 @@ export default function Home() {
       submitData.append('countries', JSON.stringify(formData.countries));
       
       // Submit to backend
-      const response = await fetch('http://localhost:5000/api/upload-pitch-deck', {
+      const response = await fetch('http://89.117.60.99:5000/api/upload-pitch-deck', {
         method: 'POST',
         body: submitData,
       });

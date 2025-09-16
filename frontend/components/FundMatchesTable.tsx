@@ -117,7 +117,6 @@ export default function FundMatchesTable({ matches }: FundMatchesTableProps) {
               <th className="py-4 px-6 text-gray-700 font-semibold text-sm">Investment Theme</th>
               <th className="py-4 px-6 text-gray-700 font-semibold text-sm">Lead</th>
               <th className="py-4 px-6 text-gray-700 font-semibold text-sm">Score</th>
-              <th className="py-4 px-6 text-gray-700 font-semibold text-sm">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -139,14 +138,15 @@ export default function FundMatchesTable({ matches }: FundMatchesTableProps) {
                           ? 'bg-gradient-to-r from-amber-600 to-yellow-600 text-white'
                           : 'bg-blue-100 text-blue-700'
                       }`}>
+                        {index + 1}
                       </div>
                     </div>
                   </td>
                   
                   <td className="py-4 px-6">
                     {match.fund.website ? (
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-gray-900"
+                      <div className="flex items-center justify-center gap-2">
+                        <span className="font-medium text-blue-900"
                         onClick={() => window.open(`https://${match.fund.website?.replace(/^https?:\/\//, '')}`, '_blank')}
                         >
                           {match.fund.website.length > 20 ? `${match.fund.website.substring(0, 20)}...` : match.fund.website}
